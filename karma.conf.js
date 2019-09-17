@@ -25,8 +25,15 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome'],
+    browsers: ['Chromium', 'Chrome', 'Chrome_without_security'],
+      customLaunchers: {
+        Chrome_without_security: {
+          base: 'ChromeHeadless',
+          flags: ['--no-sandbox', '--disable-gpu', '--disable-web-security', '--disable-site-isolation-trials']
+        }
+      },
     singleRun: false,
     restartOnFileChange: true
   });
 };
+
